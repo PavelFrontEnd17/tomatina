@@ -1,0 +1,30 @@
+.admin-panel{
+    height: 500px;
+    ul{
+        li{
+            display: block;
+            margin: 10px 0;
+            a{
+                width: 100%;
+                padding: 7px 10px;
+                background-color: #599921;
+                border-radius: 10px;
+                text-decoration: none;
+                font-weight: 900;
+                color: white;
+                transition: 0.3s;
+                border: 2px solid #599921;
+                text-transform: uppercase;
+            }
+            a:hover{
+                background-color: white;
+                color: #599921;
+
+            }
+            a.active{
+                background-color: white;
+                color: #599921;
+            }
+        }
+    }
+}

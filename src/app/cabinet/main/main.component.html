@@ -1,0 +1,120 @@
+<div class="col-7 m-auto">
+    <form class="form cabinet-form" [formGroup]="userForm" (ngSubmit)="editUser()" id="user-edit-form">
+
+        <div class="form-group">
+            <div class="form-title h5"><b>1.</b> Особисті дані</div>
+
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" class="input" name="first_name"
+                        [ngClass]="{'invalid': userForm.get('name')?.invalid}" placeholder="*Ваше ім'я"
+                        formControlName="name" required="">
+                </div>
+                <div class="col-6">
+                    <input type="text" class="input" name="last_name"
+                        [ngClass]="{'invalid': userForm.get('sname')?.invalid}" placeholder="*Ваше прізвище"
+                        formControlName="sname" required="">
+                </div>
+            </div>
+
+            <input class="input inputmask" name="phone" type="text" inputmode="numeric"
+                [ngClass]="{'invalid': userForm.get('phone')?.invalid}" [imask]="{mask: '{+38}(000)000-00-00'}"
+                [unmask]="false" placeholder="*Ваш номер телефону" formControlName="phone" required="">
+            <input type="email" name="email" class="input" [ngClass]="{'invalid': userForm.get('email')?.invalid}"
+                placeholder="*Ваш емейл" formControlName="email" required="">
+        </div>
+
+        <div class="form-group">
+            <div class="form-title h5"><b>2.</b> Адреси</div>
+
+            <div class="cabinet_address-wrap">
+                <table class="cabinet_address">
+                    <tbody>
+                        <tr *ngFor="let adress of user.adress" class="js-address-item" data-i="0">
+                            <td> <label (click)="activeAdress(adress.id)" class="checkbox-entry">
+                                    <input type="radio" disabled [checked]="adress.active" name="cabinet-address">
+                                    <span class="js-address-name">{{adress.city}}</span> </label> </td>
+                            <td>
+                                <div class="cabinet_address-detail"> <span class="js-street">{{adress.street + ' ' +
+                                        adress.buildNum}}</span>, <span class="js-house">{{adress.apartNum}}</span> кв.
+                                    <span class="js-apartment"></span> під'їзд - <span class="js-entrance"></span>
+                                    поверх - <span class="js-floor"></span> домофон -
+                                    <span class="js-intercom"></span>
+                                </div>
+                            </td>
+                            <td> <button (click)="editAdress(adress)" class="link-icon js-edit-address open-popup"
+                                    data-rel="address" type="button">Редагувати</button> </td>
+                            <td>
+                                <div class="btn-close" (click)="deleteAdress(adress)"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="cabinet_address-buttons">
+            <button (click)="openDialog()" class="btn btn btn-white open-popup js-clear-address-fields"
+                data-rel="address" type="button">Додати
+                адресу</button>
+            <button class="btn btn-primary" [disabled]="userForm.invalid" type="submit">Зберегти зміни</button>
+        </div>
+        <a class="btn btn-primary logout" (click)="exit()">Вихід</a>
+    </form>
+</div>
+
+<div class="adress-dialog-wrapper" *ngIf="addAdress">
+    <div class="adress-dialog">
+        <div class="popup-title h3 title">Адреса</div>
+
+        <form class="form" id="edit-address-form" [formGroup]="adresForm" (ngSubmit)="adressAdd()" data-i="">
+            <select formControlName="city" class="form-select input" aria-label="Default select example">
+                <option [value]="null" disabled>Оберіть місто</option>
+                <option value="Львів" selected>Львів</option>
+                <option value="Брюховичі">Брюховичі</option>
+                <option value="Великі грибовичі">Великі грибовичі</option>
+            </select>
+            <div class="SumoSelect sumo_select_city" tabindex="0" role="button" aria-expanded="true">
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-8">
+                    <input type="text" [ngClass]="{'invalid': adresForm.get('street')?.invalid}"
+                        formControlName="street" class="input ui-autocomplete-input" name="street"
+                        id="streetAutocomplete" placeholder="*Введіть вулицю доставки" required="" autocomplete="off">
+                </div>
+                <div class="col-12 col-sm-4">
+                    <input type="text" [ngClass]="{'invalid': adresForm.get('buildNum')?.invalid}"
+                        formControlName="buildNum" class="input" name="number-building" id="houseNumber"
+                        placeholder="* № будинку" required="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" formControlName="apartNum" class="input" name="number-apartment"
+                        placeholder="№ квартири">
+                </div>
+                <div class="col-6">
+                    <input type="text" class="input" formControlName="enterNum" name="number-entrance"
+                        placeholder="Під'їзд">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" class="input" formControlName="apartNum" name="number-floor"
+                        placeholder="Поверх">
+                </div>
+                <div class="col-6">
+                    <input type="text" class="input" formControlName="intercom" name="number-intercom"
+                        placeholder="Домофон">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn w-100 btn-primary btn-block save-address" [disabled]="adresForm.invalid"
+                        type="submit">{{ !editIs ? 'Зберегти': 'Редагувати' }}</button>
+                </div>
+            </div>
+        </form>
+        <button class="btn-close close-popup" (click)="closeDiaolg()"></button>
+    </div>
+</div>

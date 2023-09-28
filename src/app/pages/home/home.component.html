@@ -1,0 +1,341 @@
+<div class="section banner home-banner">
+    <div class="main-slider">
+        <div class="container-fluid p-0">
+            <div class="row m-0">
+                <div class="col-12 p-0">
+                    <div class="swiper-entry">
+
+                        <div class="swiper-container swiper-container-fade swiper-container-initialized swiper-container-horizontal"
+                            data-options="{&quot;effect&quot;:&quot;fade&quot;, &quot;watchSlidesVisibility&quot;: true,  &quot;watchSlidesProgress&quot;: true, &quot;slidesPerView&quot;:1, &quot;breakpoints&quot;: {&quot;1370&quot;: {&quot;slidesPerView&quot;: 1},&quot;1199&quot;: {&quot;slidesPerView&quot;: 1},&quot;991&quot;: {&quot;slidesPerView&quot;: 1},&quot;767&quot;: {&quot;slidesPerView&quot;: 1}}}">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide swiper-slide-visible swiper-slide-active">
+                                    <div class="banner-align size-1">
+                                        <a href="https://www.tomatina.ua/product-category/healthy-and-tasty-menu/"
+                                            class="banner-bg"
+                                            style="background-image: url(https://firebasestorage.googleapis.com/v0/b/tomatina-1d6a4.appspot.com/o/images%2Fbanner-site-ht-copy-min-1388x781.jpg?alt=media&token=dc7236af-0d9e-41f1-b1b5-3f0ba526f56f);"></a>
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div
+                                class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-lock">
+                                <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0"
+                                    role="button" aria-label="Go to slide 1"></span>
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row product-row product-row-wrapper">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="h3 title text-center swiper-main-title">Наше <span>меню</span>
+        </div>
+    </div>
+    <div class="col-6 col-lg-4 col-xl-3" *ngFor="let category of catList">
+        <div class="product product_cat_box">
+            <div class="product_image-wrap">
+                <a class="product_image" [routerLink]="[ '/product/' + category.path ]">
+                    <img class="img swiper-lazy" [src]="category.imgPath" alt="">
+
+                </a>
+
+            </div>
+
+            <div class="product_title-wrap">
+                <div class="product_title">
+                    <a class="h5 medium" [routerLink]="[ '/product/' + category.path ]"
+                        itemprop="name">{{category.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<section class="section swiper-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="h3 title text-center swiper-main-title">
+                    Страви, які вам сподобаються </div>
+            </div>
+        </div>
+
+
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let product of products">
+                    <div class="product js-product">
+                        <div class="product_image-wrap">
+                            <a class="product_image" [routerLink]="['/product/'+product.category + '/' + product.id]">
+                                <img class="img img-default imgLoaded" [src]="product?.imgPath">
+                                <ul class="product_labels" *ngIf="product.banner != null && product.banner != '' ">
+                                    <li class="product_label" style="background-color: #28af33">{{product.banner}}</li>
+                                </ul>
+                            </a>
+                            <div class="product_top-right">
+                                <button class="fav-btn " [ngClass]="{'active': getFavorite(product)}"
+                                    (click)="addFavorite(product)" data-id="85807"></button>
+                                <div class="info-main">
+
+                                    <button class="info-btn">
+                                        <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                                fill="#2d7d7d"></path>
+                                            <path
+                                                d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                                fill="#2d7d7d"></path>
+                                            <path
+                                                d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                                fill="#2d7d7d"></path>
+                                        </svg>
+                                    </button>
+
+
+                                    <div class="info-block">
+                                        <div class="info-head">Основна страва: <b>{{product.kkal}}ккал</b></div>
+                                        <div class="info-body">
+                                            <div class="info-item">
+                                                <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                    alt="">
+                                                <p>Білки – <b>{{product.prot}}</b> г;</p>
+                                            </div>
+                                            <div class="info-item">
+                                                <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                    alt="">
+                                                <p>Жири – <b>{{product.fats}}</b> г;</p>
+                                            </div>
+                                            <div class="info-item">
+                                                <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                    alt="">
+                                                <p>Вуглеводи – <b>{{product.carb}}</b> г;</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="floating_buttons">
+                                <button class="btn btn-grey fast-order" (click)="fastOrder(product)"
+                                    data-id="85807">Швидке замовлення</button>
+                            </div>
+                        </div>
+
+                        <div class="product_title-wrap">
+                            <div class="product_title">
+                                <a class="h5 medium" [routerLink]="['/product/'+product.category + '/' + product.id]"
+                                    itemprop="name">{{product.name}}</a>
+                            </div>
+                            <div class="product_price-wrap">
+                                {{product.cost * product.count}} </div>
+                        </div>
+                        <div class="product_desc text style-4">{{product.description}}</div>
+                        <div class="product_controls hidden_add_to_cart">
+                            <div class="thumb-input-number">
+                                <button type="button" (click)="Count(product, false)" class="decrement">-</button>
+                                <input [value]="product.count" class="product-qty" tabindex="-1" max="999">
+                                <button type="button" (click)="Count(product, true)" class="increment">+</button>
+                            </div>
+                            <button class="btn btn-primary order-btn btn-small add-to-cart-btn" data-sku="17396"
+                                data-id="85807" (click)="addToBuscket(product)">Замовити</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+            <div class="swiper-button-prev"  >
+                <svg width="75" height="75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M34.0699 38.8845l6.9379 6.9188c.2273.2265.5954.2261.8223-.0012.2267-.2273.2262-.5955-.0012-.8223l-6.525-6.5069 6.5252-6.507c.2274-.2267.2279-.5947.0012-.8221-.1137-.1139-.2628-.1709-.4118-.1709-.1487 0-.2971.0566-.4107.1698l-6.9379 6.9186c-.1095.1089-.1709.2571-.1709.4116 0 .1544.0616.3025.1709.4116z"
+                        fill="#2D2C2C"></path>
+                    <path
+                        d="M8.5 38.9729c0-16.2924 13.2076-29.5 29.5-29.5s29.5 13.2076 29.5 29.5-13.2076 29.5-29.5 29.5-29.5-13.2076-29.5-29.5z"
+                        stroke="#ECECEC"></path>
+                    <path class="stroke-anime"
+                        d="M8.5 38.9729c0-16.2924 13.2076-29.5 29.5-29.5s29.5 13.2076 29.5 29.5-13.2076 29.5-29.5 29.5-29.5-13.2076-29.5-29.5z"
+                        stroke="#ECECEC"></path>
+                </svg>
+            </div>
+            <div class="swiper-button-next"  ><svg width="75"
+                    height="75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M46.0024 42.1606l-6.9379-6.9187c-.2274-.2266-.5954-.2262-.8223.0012-.2268.2273-.2262.5955.0012.8222l6.5249 6.507-6.5252 6.5069c-.2273.2268-.2279.5948-.0012.8221.1138.114.2628.171.4119.171.1486 0 .2971-.0566.4106-.1698l6.938-6.9186c.1095-.1089.1709-.2572.1709-.4116 0-.1545-.0616-.3025-.1709-.4117z"
+                        fill="#2D2C2C"></path>
+                    <circle cx="42.0723" cy="42.0723" r="29.5" stroke="#F1F1F1"></circle>
+                    <circle class="stroke-anime" cx="42.0723" cy="42.0723" r="29.5" stroke="#F1F1F1"></circle>
+                </svg></div>
+
+
+
+        </div>
+
+
+
+    </div>
+    <div class="spacer-lg" bis_skin_checked="1"></div>
+    <div class="section seo-sec">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-5 col-lt-5 col-lg-6 order-lg-2 align-self-end">
+                    <div class="seo-img">
+                        <img
+                            src="https://www.tomatina.ua/wp-content/uploads/2023/05/xseo-img.png.pagespeed.ic.AR8EaIc0Qs.png"
+                            >
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 425 404" xml:space="preserve" class="d-none">
+                            <defs>
+                                <pattern id="seoOne" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                                    <image xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xlink:href="https://www.tomatina.ua/wp-content/uploads/2023/05/seo-img-406x360.png"
+                                        x="0" y="0" width="100%" height="100%"></image>
+                                </pattern>
+                            </defs>
+                            <path fill="url(#seoOne)"
+                                d="M62.9518 91.6365C57.8597 97.7943 53.0731 104.376 48.6443 111.419C18.006 160.08 8.6923 224.171 23.8091 282.085C29.9635 305.643 40.2798 328.603 56.6207 345.763C79.6779 369.972 112.638 380.317 144.291 380.961C241.449 382.928 352.456 328.662 401.93 237.644C423.869 197.282 429.506 143.112 405.561 102.591C392.566 80.5964 372.253 64.5708 350.707 52.9502C259.065 3.43911 131.829 8.49317 62.9518 91.6365Z">
+                            </path>
+                        </svg>
+                        <div class="seo-decor d-none">
+                            <img alt=""
+                                src="https://www.tomatina.ua/wp-content/themes/tomatina/img/xseo-decor.png.pagespeed.ic.hthYdTL4-N.png"
+                                >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lt-5 col-lg-6 offset-xl-1 offset-lt-1 order-lg-1">
+                    <div class="seo-cont">
+                        <div class="title h4"><span>Tomatina</span> </div>
+                        <div class="text style-3">
+                            <h1>Tomatina — доставка здорової їжі у Львові, яка завжди поруч</h1>
+
+                            <p>Хто сказав, що доставка їжі — це лише піца та суші? Tomatina поспішає зруйнувати всі
+                                стереотипи. Наші шефи знають, як готувати водночас смачні й корисні страви. А кур'єри —
+                                як доставити ваше замовлення у будь-який куточок міста дуже швидко. Тож запрошуємо
+                                поринути у світ корисних страв разом з рестораном здорового харчування Томатіна!</p>
+                        </div>
+                        <div class="more-text" [ngClass]="{'open-more-text': read}">
+                            <div class="text style-3">
+                                <h2>Tomatina — меню для тих, хто цінує баланс користі та смаку</h2>
+
+                                <p>У ритмі сучасного життя у Львові іноді не вистачає часу на те, щоб подбати про
+                                    здоровий обід. Але ми беремо це завдання на себе. Усе, що залишилося вам — це обрати
+                                    страви з меню. Доставка здорової їжі у Львові подбає про те, щоб ви отримали
+                                    замовлення вчасно. Кожну позицію шеф-кухарі у Львові розробляли з турботою
+                                    орієнтуючись на відгуки та побажання гостей.</p>
+
+                                <h3><a>Салати</a></h3>
+
+                                <p>Мабуть, найулюбленіша страва серед усіх варіантів здорового харчування. Багато
+                                    зелені, свіжих овочів та морепродуктів, авторські заправки від шефів. - встояти
+                                    неможливо. Меню для вас містить унікальні позиції салатів:</p>
+
+                                <ul>
+                                    <li>“Гранд Цезар” — удосконалена класика. Соковита курка су-від, хрусткий бекон,
+                                        свіжий мікс салату, соковиті помідори чері, перепелині яйця, сухарики та
+                                        крафтовий соус Цезар.</li>
+
+                                    <li>“Томато мікс з анчоусами” — салат з міксом томатів, анчоусами та вершковим сиром
+                                        фета. Це поєднання смаків вражає, це так незвично, але дуже смачно.</li>
+
+                                    <li>“Ростбіф з в’яленими томатами” — чудове поєднання соковитого ростбіфу, салатного
+                                        міксу, в’ялених томатів, перцю гриль, хрусткими сухариками, руколою та соусом
+                                        манго-чилі з кінзою.</li>
+                                </ul>
+
+                                <p>До кожного салату ви можете додати складники: ще більше лосося, сиру чи улюбленого
+                                    соусу.</p>
+                                <h3><a>Салати пасти</a>
+                                </h3>
+
+                                <p>Не знаєте, що обрати сьогодні: салат чи пасту? Доставка їжі у Львові з ресторану
+                                    здорового харчування Томатіна має для вас дещо особливе. Наші салат-пасти — це
+                                    тандем лінгвіні, спагеті або фарфале з салатним міксом, морепродуктами та м'ясом.
+                                </p>
+
+                                <p>Салати пасти Томатіна, які вам сподобаються:</p>
+
+                                <ul>
+                                    <li>Собу з куркою та грибами. Паста, в склад якої входить гречана мука у поєднанні
+                                        із міксом грибів (лисички, білі гриби, печериці) та соковитою куркою су-від
+                                        створюють неповторний смак, який точно стане фаворитом. Смак основних
+                                        компонентів підкреслюють сир пармезан, вершковий соус, цибуля, свіжий мікс
+                                        салату, трюфельна олія та олійка авокадо.</li>
+
+                                    <li>Салат пасту Ранчо - чудовий мікс смаку соковитого ростбіфу, пасти лінгвіні,
+                                        перцю, броколі, пармезану та грибного соусу з трюфельною пастою. Свіжості цій
+                                        страві додає мікс салату та соковиті помідори чері.</li>
+
+                                    <li>Салат пасту Прошуто Моцарела. Лінгвіні, багато прошуто та вершкова бебі
+                                        моцарела. Все це доповнює томатний соус, болгарський перець та мікс хрусткого
+                                        салату в апельсиновому соусі..</li>
+                                </ul>
+
+                                <p>Салат-пасти Томатіна — це чудовий вибір для ситного обіду або смачної вечері.
+                                    Спробуйте, і ви будете у захваті!</p>
+
+
+                                <h3><a>Супи</a></h3>
+
+                                <p>Ситні, смачні та корисні. Як основна чи перша страва, вони смакують просто чудово.
+                                    Рекомендуємо спробувати наші улюблені:</p>
+                                <ul>
+                                    <li>Ніжний крем-суп сочевиця-батат, який ми готуємо на вершковій основі. Ця страва —
+                                        достатньо ситна, тож цілком може замінити повноцінний обід або вечерю.</li>
+                                    <li>Шпинатний крем-суп з сиром фета та сухариками. Сподобається тим, хто полюбляє
+                                        овочеві супи. Легкий, але ситний, цей суп ніколи не набридає. Як перша страва чи
+                                        як повноцінний обід, він створений спеціально для вас.</li>
+                                </ul>
+
+                                <p>Супи ми завжди привозимо ще гарячими. Тож ви зможете сповна оцінити смак та аромат
+                                    цієї страви.</p>
+
+                                <h3><a>Сніданки</a></h3>
+
+                                <p>Кожного дня до 18:00 ми пригощаємо смачними сніданками, приготованими зі здорових
+                                    інгредієнтів. Починайте свій день смачно, замовивши:</p>
+
+                                <ul>
+                                    <li>Англійський сніданок;</li>
+
+                                    <li>Сирники з лососем та авокадо;</li>
+
+                                    <li>Сирники з йогуртом та міксом джемів;</li>
+                                    <li>Омлет з лососем та крем-чилі;</li>
+
+                                </ul>
+
+                                <p>…й багато інших смачних сніданків від шеф-кухарів Tomatina. Тож не витрачайте час на
+                                    приготування здорового харчування зранку: довірте цю страву нам.</p>
+                                <h3>Меню для вегетаріанців</h3>
+                                <p>Ми врахували побажання гостей, тож доставка здорової їжі Львів Tomatina пропонує
+                                    також страви без м'яса та риби. До прикладу, Ви можете скуштувати печений баклажан з
+                                    сиром тофу. У його складі — мікс салату, соєва заправка, баклажан, чері, рукола,
+                                    тофу, часник, мікс насіння, цибуля фіолетова маринована, мікс кунжуту. </p>
+                            </div>
+                            <div (click)="readMore()" class="read-more">{{!read? 'ЧИТАТИ БІЛЬШЕ' : 'ЗГОРНУТИ'}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spacer-lg"></div>
+    </div>
+    <div style="height: 60px;"></div>
+
+</section>

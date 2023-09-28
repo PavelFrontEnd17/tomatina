@@ -1,0 +1,41 @@
+<div class="pass">
+    <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+        <div class="h5 title pass-title">Зміна паролю</div>
+
+        <form class="form" [formGroup]="passForm" (ngSubmit)="passChange()" id="user-edit-password">
+
+            <input type="password" (input)="inputOldPass() " formControlName="old" name="old_password"
+                placeholder="*Ваш поточний пароль" class="input" required="">
+            <input type="password" formControlName="new" (input)="inputNewPass() " name="password"
+                placeholder="*Новий пароль" class="input" required="">
+            <input type="password" formControlName="newRep" (input)="inputRepPass() " name="password2"
+                placeholder="*Повторіть пароль" class="input" required="">
+            <!-- this.passForm.get('old').value -->
+            <div class="errors">
+                <div *ngIf="inputNew && inputRepPass">
+                    <span *ngIf="this.passForm.get('new')?.value != 
+                    this.passForm.get('newRep')?.value" 
+                    class="new-new">Паролі не співпадають</span>
+                </div>
+                <div *ngIf="inputOld">
+                    <span *ngIf="user.pass != 
+                    this.passForm.get('old')?.value" 
+                    class="new-new">Невірний старий пароль</span>
+                    
+                </div>
+                <div *ngIf="inputNew">
+                    <span *ngIf="this.passForm.get('new')?.invalid" class="wrong-format">Невірний формат паролю,
+                        лише англійські букви і цифри</span>
+                    <span *ngIf="this.passForm.get('new')?.value?.length < 8" class="short">Занадто короткий новий
+                        пароль</span>
+                </div>
+                <span *ngIf="criticalError" class="short">Занадто короткий новий
+                    пароль</span>
+            </div>
+            <button class="btn btn-primary btn-block" 
+            [disabled]="this.passForm.invalid || !checkValidity() || this.passForm.get('new')?.value != this.passForm.get('newRep')?.value || 
+            this.passForm.get('old')?.value != this.user.pass" 
+            type="submit">Зберегти зміни</button>
+        </form>
+    </div>
+</div>

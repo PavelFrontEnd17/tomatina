@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+
+@font-face {
+    font-family: Geometria;
+    src: url('fonts/Geometria.woff');
+}
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: Geometria;
+    vertical-align: baseline;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.admin-dialog {
+    
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+}
+
+
+body::-webkit-scrollbar {
+    width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+    background: white;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #599921;
+}
+
+.cdk-global-overlay-wrapper{
+    overflow: scroll;
+}
+
+
+.btn-primary:hover {
+    background: #fff!important;
+    color: #599921!important;
+}
+
+.btn-gray:hover {
+    background-color: #599921!important;
+    color: #fff!important;
+}

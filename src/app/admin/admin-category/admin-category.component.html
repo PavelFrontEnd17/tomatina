@@ -1,0 +1,49 @@
+<div class="row">
+
+    <div class="col-4 form">
+        <form [formGroup]="catForm" (ngSubmit)="addCategory()" >
+            <input type="text" class="input" formControlName="name"  placeholder="*Ім'я">
+            <input type="text" class="input" formControlName="path"  placeholder="*Шлях">
+            <input type="number" class="input" formControlName="order"  placeholder="*Порядковий номер">
+            <input class="form-control input file" type="file" (change)="upload($event)" id="formFile">
+            <ng-container *ngIf="isUploded">
+                <div class="progress mb-3" role="progressbar" aria-label="Default striped example" aria-valuemin="0"
+                    aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped" [style.width.%]="upProcent"></div>
+                </div>
+                <img style="height: 100px;" [src]="valueByControl('imgPath')" alt="">
+                <button type="button" class="btn btn-danger" (click)="deleteImage()">Delete</button>
+            </ng-container>
+            <input type="submit" value="ДОДАТИ" [disabled]="catForm.invalid" class="btn btn-green" >
+        </form>
+    </div>
+    <div class="col-5 table">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>ім'я</th>
+                <th>шлях</th>
+                <th>картинка</th>
+                <th>Контроль</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cat of catList">
+                    <td>{{cat.id}}</td>
+                    <td>{{cat.name}}</td>
+                    <td>{{cat.path}}</td>
+                    <td><img [src]="cat.imgPath" ></td>
+                    <td>
+                        <button 
+                        class="edit btn btn-gray"
+                        [disabled]="editStatus" (click)="deleteCategory(cat)" >ВИДАЛИТИ</button>
+                        <button 
+                        class="delete btn btn-green"
+                        (click)="editCategory(cat)" >РЕДАГУВАТИ</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

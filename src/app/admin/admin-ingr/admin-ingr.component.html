@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-12 form">
+        <form [formGroup]="ingrForm" (ngSubmit)="addIngr()" >
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" class="input" formControlName="name" placeholder="*Ім'я">
+                </div>
+                <div class="col-6">
+                    <select class="input" formControlName="type">
+                        <option value="Основа">Основа</option>
+                        <option value="Основний інгредієнт">Основний інгредієнт</option>
+                        <option value="Сири та яйця">Сири та яйця</option>
+                        <option value="Зелень">Зелень</option>
+                        <option value="Хрусткі топінги">Хрусткі топінги</option>
+                        <option value="Соуси">Соуси</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="justify-content: space-between;">
+                <div class="col-2">
+                    <input type="number" formControlName="kkal" class="input" placeholder="*Калорії">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="prot" placeholder="*Білки">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="fats" placeholder="*Жири">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="carb" placeholder="*Вуглеводи">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="weight" placeholder="*Вaгa">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="cost" placeholder="*Ціна">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <input class="form-control input file" (change)="upload($event)" type="file"  id="formFile">
+                </div>
+            </div>
+            <ng-container *ngIf="IsUploded">
+                <div class="progress mb-3" role="progressbar" aria-label="Default striped example" aria-valuemin="0"
+                  aria-valuemax="100">
+                  <div class="progress-bar progress-bar-striped" [style.width.%]="updatePercent"></div>
+                </div>
+                <img style="height: 100px;" [src]="valueByControl('imgPath')" alt="">
+                <button type="button" class="btn btn-danger" (click)="deleteImage()">Delete</button>
+            </ng-container>
+            <div class="col-12">
+                <input type="submit" value="ДОДАТИ" [disabled]="ingrForm.invalid" class="btn btn-green" >
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>ім'я</th>
+                <th>Тип</th>
+                <th>Ціна</th>
+                <th>Вага</th>
+                <th>Цінність</th>
+                <th style="width: 10%;">картинка</th>
+                <th>Контроль</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ingr of ingrList">
+                    <td>{{ingr.id}}</td>
+                    <td>{{ingr.name}}</td>
+                    <td>{{ingr.type}}</td>
+                    <td>{{ingr.cost}}</td>
+                    <td>{{ingr.weight}}</td>
+                    <td>{{ingr.kkal}} ккал, білки {{ingr.carb}}, жири {{ingr.prot}}, вуглеводи {{ingr.fats}}</td>
+                    <td><img [src]="ingr.imgPath"alt="" style="width: 100%;
+                        max-width: 100%;
+                        height: 100%;
+                        margin-top: 50px;"></td>
+                    <td><input type="button" class="btn btn-wgreen" (click)="editIngr(ingr)" value="РЕДАГУВАТИ">
+                        <input type="button" [disabled]="editStatus" (click)="deleteIngr(ingr)" class="btn btn-gray" value="ВИДАЛИТИ">
+                       </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

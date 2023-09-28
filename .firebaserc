@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tomatina-273ab": {
+      "hosting": {
+        "tomatina": [
+          "tomatina-273ab"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tomatina-273ab"
+  }
+}

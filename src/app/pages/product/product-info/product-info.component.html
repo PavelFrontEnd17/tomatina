@@ -1,0 +1,103 @@
+<div class="section">
+    <div style="height: 20px;"></div>
+    <div class="w-100" style="    width: 100%;
+    padding: 0 60px;">
+        <div class="breadcrumps"></div>
+        <div class="row">
+            <div class="col-6 img-col">
+                <div class="swiper-entry product_detail-swiper lightbox-wrapper">
+                    <div class="swiper-button-prev d-none swiper-button-disabled swiper-button-lock" tabindex="-1"
+                        role="button" aria-label="Previous slide" aria-disabled="true"></div>
+                    <div class="swiper-button-next d-none swiper-button-disabled swiper-button-lock" tabindex="-1"
+                        role="button" aria-label="Next slide" aria-disabled="true"></div>
+                    <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide swiper-slide-active" >
+                                <img class="img swiper-lazy swiper-lazy-loaded" [src]="product?.imgPath">
+                            </div>
+                        </div>
+                        <span class="swiper-notification"></span>
+                    </div>
+                    <div
+                        class="swiper-pagination swiper-pagination-relative swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-lock">
+                        <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0"
+                            role="button" aria-label="Go to slide 1"></span>
+                    </div>
+                    <button class="fav-btn " [ngClass]="{'active': getFavorite(product)}" data-id="80021" (click)="addFavorite(product)"></button>
+                </div>
+            </div>
+            <div class="col-6 desc-col">
+                <div class="product_detail js-product js-product-detail" data-price="209"
+                    data-cats="healthy &amp; tasty menu,Салати">
+                    <div class="product_size"><span class="size">{{product?.weight}}</span> г</div>
+                    <h1 class="title h2" itemprop="name">{{product?.name}}</h1>
+                    <div class="description">
+                        <p>{{product?.description}}</p>
+                        <p> *Містить алергени: {{product?.alergens}}</p>
+                    </div>
+                    <ul class="product_variations">
+                    </ul>
+
+
+
+
+                    <div class="info-main-res">Харчова цінність:
+                        <b>{{product?.kkal}} </b>ккал
+                    </div>
+
+
+                    <div class="info-block info-prod">
+
+
+                        <div class="info-head title total_caloric_single">
+                            Харчова цінність страви:
+                            <b>{{product?.kkal}}</b> ккал
+                        </div>
+
+                        <div class="info-body sum">
+                            <div class="info-item main_proteins">
+                                <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg">
+                                <p>Білки – <b>{{product?.prot}}</b>
+                                    г</p>
+                            </div>
+                            <div class="info-item main_fat">
+                                <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg">
+                                <p>Жири – <b>{{product?.fats}}</b>
+                                    г</p>
+                            </div>
+                            <div class="info-item main_sarbohydrates">
+                                <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg">
+                                <p>Вуглеводи –
+                                    <b>{{product?.carb}}</b> г
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="product_detail-controls">
+                        <div class="thumb-input-number">
+                            <button type="button" class="decrement" (click)="Count(product, false)">-</button>
+                            <input class="product-qty" [value]="product?.count" readonly="" tabindex="-1" max="999">
+                            <button type="button" class="increment" (click)="Count(product, true)">+</button>
+                        </div>
+                        <div class="product_price-wrap">
+                            <div class="product_price" itemprop="price"><b class="price">{{totalPrice}}</b> грн</div>
+                        </div>
+                    </div>
+
+                    <div class="product-detail-btns ">
+                        <button class="btn btn-primary order-btn add-to-cart-btn" data-sku="16878" data-id="80021">
+                            Додати в кошик </button>
+                        <button class="btn btn-white order-btn fast-order" data-sku="16878" data-id="80021">
+                            Швидке замовлення </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 60px;"></div>
+
+</div>

@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-12 form">
+        <form [formGroup]="prodForm" (ngSubmit)="addProduct()" >
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" class="input" formControlName="name" placeholder="*Ім'я">
+                </div>
+                <div class="col-6">
+                    <select class="input" formControlName="category">
+                        <option [value]="null" selected disabled>Оберіть категорію</option>
+                        <option *ngFor="let cat of catList" [value]="cat.path">{{cat.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="justify-content: space-between;">
+                <div class="col-2">
+                    <input type="number" formControlName="kkal" class="input" placeholder="*Калорії">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="prot" placeholder="*Білки">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="fats" placeholder="*Жири">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="carb" placeholder="*Вуглеводи">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="weight" placeholder="*Вaгa">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="input" formControlName="cost" placeholder="*Ціна">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12" style="display: flex; justify-content: center;"> <h3>Banner</h3> <input type="checkbox" (click)="bannerCheck()" class="form-check-input"></div>
+                <div class="col-6" style="position: relative;">
+                    <div class="saver" *ngIf="!bannerOn" style="position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 1;"></div>
+                    <input type="text" [disabled]="!bannerOn" formControlName="banner" placeholder="*Текст банеру" class="input banner">
+                </div>
+                <div class="col-6" style="position: relative;
+                display: flex;">
+                <div class="saver" *ngIf="!bannerOn" style="position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 1;"></div>
+                    <select formControlName="bannerCol" [disabled]="!bannerOn" class="form-select input color form-select-lg mb-3" aria-label="Large select example">
+                        <option selected [value]="null">*Оберіть колір</option>
+                    </select>
+                    <div class="color-preview"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <textarea class="input" formControlName="description" placeholder="*Опис" cols="30" rows="10"></textarea>
+                </div>
+                <div class="col-4">
+                    <textarea class="input" formControlName="alergens" placeholder="*Алергени" cols="30" rows="10"></textarea>
+                </div>
+                <div class="col-4">
+                    <input class="form-control input file" (change)="upload($event)" type="file"  id="formFile">
+                </div>
+            </div>
+            <ng-container *ngIf="IsUploded">
+                <div class="progress mb-3" role="progressbar" aria-label="Default striped example" aria-valuemin="0"
+                  aria-valuemax="100">
+                  <div class="progress-bar progress-bar-striped" [style.width.%]="updatePercent"></div>
+                </div>
+                <img style="height: 100px;" [src]="valueByControl('imgPath')" alt="">
+                <button type="button" class="btn btn-danger" (click)="deleteImage()">Delete</button>
+            </ng-container>
+            <div class="col-12">
+                <input type="submit" value="ДОДАТИ" [disabled]="prodForm.invalid" class="btn btn-green" >
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>ім'я</th>
+                <th>Категорія</th>
+                <th>Ціна</th>
+                <th>Вага</th>
+                <th>Цінність</th>
+                <th>Опис</th>
+                <th>Алергени</th>
+                <th style="width: 10%;">картинка</th>
+                <th>Контроль</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prod of prodList">
+                   <td>{{prod.id | slice: 0:6}}</td> 
+                   <td>{{prod.name}}</td> 
+                   <td>{{prod.category}}</td> 
+                   <td>{{prod.cost }}</td> 
+                   <td>{{prod.weight }}</td> 
+                   <td>{{prod.kkal}} ккал, білки {{prod.prot}}, жири {{prod.fats}}, вугл. {{prod.carb }} </td> 
+                   <td>{{prod.description}}</td> 
+                   <td>{{prod.alergens }}</td> 
+                   <td ><img [src]="prod.imgPath"alt="" style="width: 100%;
+                    max-width: 100%;
+                    height: 100%;
+                    margin-top: 50px;"></td> 
+                   <td>
+                    <input type="button" class="btn btn-wgreen" (click)="editProduct(prod)" value="РЕДАГУВАТИ">
+                    <input type="button" [disabled]="editStatus" (click)="deleteProduct(prod)" class="btn btn-gray" value="ВИДАЛИТИ">
+                   </td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

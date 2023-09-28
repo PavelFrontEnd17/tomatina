@@ -1,0 +1,41 @@
+<div style="height: 80px;"></div>
+<div class="container">
+    <div class="select">
+        <select (change)="open()" class="select-cat input">
+            <option class="opt"
+            value="main">
+                Особисті дані
+            </option>
+            <option class="opt"
+            value="order-list">
+                Історія замовлень
+            </option>
+            <option class="opt"
+            value="favorite">
+                Улюблені
+            </option>
+            <option class="opt"
+            value="pass-change">
+                Зміна паролю
+            </option>
+        </select>
+    </div>
+    <div class="categories-menu">
+        <ul class="categories-list">
+            <li class="categories-list-item " [routerLink]="['/cabinet/main']" routerLinkActive="active"><a>Особисті
+                    дані</a></li>
+            <li class="categories-list-item " [routerLink]="['/cabinet/order-list']" routerLinkActive="active">
+                <a>Історія замовлень</a></li>
+            <li class="categories-list-item " [routerLink]="['/cabinet/favorite']" routerLinkActive="active">
+                <a>Улюблені</a></li>
+            <li class="categories-list-item " [routerLink]="['/cabinet/pass-change']" routerLinkActive="active"><a>Зміна
+                    паролю</a></li>
+
+        </ul>
+    </div>
+    <div class="row">
+        <router-outlet></router-outlet>
+
+    </div>
+    <div style="height: 50px;"></div>
+</div>

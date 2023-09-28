@@ -1,0 +1,16 @@
+<div class="popup-container size-1">
+    <div class="popup-align text-center text">
+        <div class="popup-title h3 title">Відновити пароль</div>
+        <div class="popup-description">Після заповнення форми, ми надішлемо вам детальну інструкцію по відновленню паролю</div>
+        <form class="form popup-form" id="forgot-password-form">
+            <input type="email" class="input" name="email" placeholder="*Ваш емейл" required="">
+            <button class="btn btn-primary btn-block" type="submit">Відновити пароль</button>
+            <div class="error-message"></div>
+        </form>
+        <div class="popup-bottom text style-3">Повернутися до 
+            <a class="open-popup" data-rel="1" mat-button mat-dialog-close (click)="openAuth()" >Входу</a></div>
+    </div>
+    <button class="btn-close close-popup" mat-button mat-dialog-close (click)="closeAll()" ></button>
+    <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/popup_bg.svg" class="popup-bg-decor" alt="" >
+    <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/popup_list.svg" class="popup-list-decor" alt="" >
+</div>

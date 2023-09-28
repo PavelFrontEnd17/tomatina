@@ -1,0 +1,368 @@
+@media screen and (max-width: 1800px) {
+
+    .product_detail-swiper,
+    .product_detail-img {
+        width: 100%;
+    }
+
+    .swiper-entry {
+        position: relative;
+    }
+
+    .swiper-container {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+    }
+
+    .swiper-container {
+        padding-bottom: 20px;
+
+        .swiper-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            transition-property: transform;
+            box-sizing: content-box;
+
+            .swiper-slide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                transition-property: transform;
+
+                .img {
+                    display: inline-block;
+                    max-width: 100%;
+                    max-height: 100%;
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+
+
+    .product_detail {
+        position: relative;
+        display: block;
+        padding: 0;
+    }
+
+    .product_size {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 16px;
+        line-height: 1;
+        padding: 5px;
+        border: 1px solid #ECECEC;
+        margin-top: 5px;
+    }
+
+    h1 {
+        font-size: 38px;
+        font-weight: 900;
+        margin-bottom: 20px;
+    }
+
+    .fav-btn {
+        width: 23px;
+        height: 20px;
+        line-height: 20px;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        cursor: pointer;
+        -webkit-transition: 0.25s;
+        -o-transition: 0.25s;
+        transition: 0.25s;
+    }
+
+    .fav-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    .fav-btn {
+        background-image: url('https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/love-empty-icon.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+
+    .description {
+        margin-bottom: 20px;
+        line-height: 1.6em;
+        color: #6D6D6D;
+    }
+
+    .info-block.info-prod {
+        margin: 20px 0;
+    }
+
+    .info-block.info-prod {
+        position: relative;
+        display: block;
+        width: 100%;
+        opacity: 1;
+        top: auto;
+        left: auto;
+        right: auto;
+        padding: 20px 30px;
+        transform: none;
+        visibility: visible;
+        background: #F5F5F5;
+        border-radius: 6px;
+    }
+
+
+    .info-head {
+        position: relative;
+        display: block;
+        flex-basis: 100%;
+        width: 100%;
+        font-size: 12px;
+        color: #2D2C2C;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        text-align: left;
+        margin: 20px 0 10px 0;
+        font-size: 14px;
+    }
+
+    .title {
+        font-weight: 700;
+    }
+
+
+    .info-body {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+
+    .info-item {
+        margin-bottom: 5px;
+    }
+
+    .info-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        img {
+            margin-right: 10px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+    }
+
+
+    .product_detail-controls {
+        padding: 20px 0;
+        border-top: 1px solid #F5F5F5;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .thumb-input-number {
+        margin-right: 50px;
+        display: inline-flex;
+        align-items: center;
+        color: #181818;
+        font-size: 14px;
+        line-height: 1;
+
+        button {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            background: none;
+            -webkit-transition: 0.25s;
+            -o-transition: 0.25s;
+            transition: 0.25s;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2D2C2C;
+            background-color: #F5F5F5;
+            border-radius: 5px;
+        }
+
+        input {
+            width: 35px;
+            height: 26px;
+            font-weight: 500;
+            color: #2D2C2C;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+
+
+    .btn.btn-primary {
+        color: #FFF;
+        background: #599921;
+        border: 2px solid #599921;
+        border-radius: 6px;
+        padding: 18px 30px;
+    }
+
+    .btn-primary:hover {
+        background: #FFF;
+        color: #599921;
+    }
+
+    .btn {
+        display: inline-block;
+        vertical-align: bottom;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        background: none;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 700;
+        padding: 10px 25px;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+    }
+
+    .product-detail-btns {
+        button:last-child {
+            float: right;
+        }
+    }
+
+
+
+    .btn-white:hover {
+        background-color: #599921;
+        color: #fff;
+    }
+
+    .btn.btn-white {
+        color: #599921;
+        background: #fff;
+        border: 2px solid #599921;
+        border-radius: 6px;
+        padding: 18px 30px;
+    }
+
+
+    .fav-btn.active {
+        background-image: url('https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/love-icon.svg') !important;
+    }
+
+
+    .fav-btn:active {
+        -webkit-transform: translateY(3px);
+        -ms-transform: translateY(3px);
+        transform: translateY(3px);
+    }
+
+    .btn-white:hover {
+        background-color: #599921;
+        color: #fff;
+    }
+
+
+    .add-to-cart-btn{
+        width: 40%;
+    }
+    .fast-order{
+        width: 50%;
+    }
+}
+
+
+@media screen and (max-width: 990px) {
+    .row {
+        justify-content: center;
+    }
+
+    .img-col {
+        width: 100%;
+    }
+
+    .desc-col {
+        width: 90%;
+    }
+}
+
+
+@media screen and (max-width: 676px) {
+
+    .btn {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .info-body {
+        flex-wrap: wrap;
+        width: 50%;
+
+        div {
+            flex-wrap: nowrap;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 545px) {
+
+    .info-body {
+        flex-wrap: wrap;
+        width: 60%;
+    }
+}
+
+
+@media screen and (max-width: 486px) {
+
+    .info-body {
+        flex-wrap: wrap;
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 412px) {
+
+    .info-body {
+        width: 100%;
+    }
+}

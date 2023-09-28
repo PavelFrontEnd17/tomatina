@@ -1,0 +1,275 @@
+footer {
+    // bottom: 0;
+    // position: absolute;
+    width: 100%;
+    z-index: 9;
+}
+
+.footer-top {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    .row {
+        width: 100%;
+    }
+
+    .footer-link {
+        position: relative;
+        display: block;
+        width: 100%;
+
+        li:last-child {
+            margin-bottom: 0px;
+
+            a {
+                position: relative;
+                display: block;
+                font-size: 14px;
+                color: #6D6D6D;
+                margin-bottom: 35px;
+                transition: all 0.3s;
+                -webkit-transition: all 0.3s;
+            }
+
+            a:last-child {
+                margin-bottom: 0;
+
+
+            }
+        }
+    }
+
+    .footer-icon-block {
+        position: relative;
+        display: flex;
+        width: 100%;
+        margin-bottom: 30px;
+
+        .btn-icon {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-items: flex-start;
+
+            .bg {
+                path {
+                    fill: #599921;
+                    transition: all 0.3s;
+                    -webkit-transition: all 0.3s;
+                }
+            }
+
+            .bg-icon.margin {
+                margin-top: 14px;
+            }
+
+            .bg-icon {
+                position: absolute;
+                margin-top: 14px;
+                margin-left: 2px;
+
+                .bg-icon path {
+                    transition: all 0.3s;
+                }
+            }
+        }
+
+        .footer-info {
+            position: relative;
+            display: block;
+            width: 100%;
+
+            .footer-info-block {
+                position: relative;
+                display: block;
+                margin-bottom: 20px;
+
+                .text {
+                    font-size: 15px;
+                    line-height: 1.5em;
+
+                    p {
+                        margin-top: 2px;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .footer-info-block:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #2D2C2C;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.title {
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.facebook {
+    .bg {
+        path {
+            fill: #255A9C !important;
+            stroke: #255A9C;
+        }
+    }
+}
+
+.insta {
+    .bg {
+        path {
+            fill: url(#myGradient) !important;
+            stroke: transparent;
+            transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+        }
+    }
+}
+
+.footer-bottom {
+    padding: 20px 0;
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 40px 0 30px 0;
+}
+
+.copiri {
+    color: #6D6D6D;
+}
+
+.text.style-4 {
+    p {
+        font-size: 15px;
+        line-height: 1.2em;
+    }
+}
+
+.footer-pay {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    span {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 65px;
+        height: 40px;
+        border: 1px solid #ECECEC;
+        border-radius: 5px;
+    }
+
+    span:first-child {
+        margin-right: 5px;
+    }
+}
+
+
+.footer_redstone {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    color: #6D6D6D;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+
+}
+
+
+.footer-dev-logo:before {
+    background: #fff url('https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/redstone.svg');
+    background-repeat: no-repeat;
+    width: 78px;
+    background-position: right center;
+    background-size: 100%;
+    content: '';
+    right: 0px;
+    top: 0px;
+    position: absolute;
+    height: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .footer-top {
+        width: 80%;
+        margin: 0 auto;
+
+        .footer-link.right {
+            a {
+                text-align: right;
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 995px) {
+    .footer-link.right {
+        a {
+            text-align: left!important;
+        }
+    }
+    .footer-icon-block.right {
+        display: flex;
+        justify-content: center;
+        .footer-info{
+            width: auto!important;
+            margin-right: 10px;
+        }
+    }
+
+    .footer_redstone {
+
+        justify-content: center!important;
+
+    }
+    .footer-dev-logo:before {
+        position: relative;
+        background: #fff url(https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/redstone.svg);
+        background-repeat: no-repeat;
+        width: 77px;
+        background-position: right center;
+        background-size: 100%;
+        content: "";
+        right: 247px;
+        top: 0px;
+        position: absolute;
+        height: 100%;
+    }
+}
+
+
+@media  screen and (max-width: 767px) {
+    .footer-dev-logo-wrapper{
+        a:before {
+            right: 157px!important;
+        }   
+    }
+
+}

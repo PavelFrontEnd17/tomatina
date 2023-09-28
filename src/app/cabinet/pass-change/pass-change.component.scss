@@ -1,0 +1,74 @@
+.pass {
+    padding: 0 40px;
+    .pass-title {
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+    form{
+        .input {
+            margin-bottom: 20px;
+        }
+        .input {
+            width: 100%;
+            font-size: 16px;
+            height: 54px;
+            color: #2D2C2C;
+            border: 1px solid #ECECEC;
+            background-color: #fff;
+            line-height: 51px;
+            padding: 0 20px;
+            border-radius: 3px;
+            -webkit-transition: 0.25s;
+            -o-transition: 0.25s;
+            transition: 0.25s;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+        }
+        .btn.btn-primary {
+            color: #FFF;
+            background: #599921;
+            border: 2px solid #599921;
+            border-radius: 6px;
+            padding: 18px 30px;
+        }
+        .btn.btn-block {
+            display: block;
+            width: 100%;
+            padding: 22px 30px;
+        }
+        .btn {
+            display: inline-block;
+            vertical-align: bottom;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            background: none;
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 700;
+            padding: 10px 25px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.errors{
+    width: 100%;
+    padding: 10px;
+    span{
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: #DC132B;
+    }
+}
+
+.h5 {
+    font-size: 18px;
+}

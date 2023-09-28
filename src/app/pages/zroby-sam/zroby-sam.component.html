@@ -1,0 +1,520 @@
+<div class="section create-sec">
+    <div class="spacer-md style-2"></div>
+    <div class="cont">
+        <div class="row">
+            <div class="col-12">
+                <div class="h3 title text-center">
+                    <p>Створи <span style="color: #599921;">свою страву</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="justify-content: center;">
+            <div class="col-10">
+                <div class="create-main text">
+                    <div class="ing_body" id="ing_body" data-product-price="0">
+                        <div class="ing_body-left">
+                            <div class="ing_output" id="ing_output">
+                                <div class="h6 title">Що ви обрали:</div>
+                                <div class="ing_control" *ngFor="let ingr of ingrBucket">
+                                    <div class="ing_control-title">{{ingr.name}}</div>
+                                    <div class="thumb-input-number">
+                                        <button type="button" (click)="setCount(ingr, false)"
+                                            class="decrement">-</button>
+                                        <input [value]="ingr.count" class="product-qty" readonly="" tabindex="-1">
+                                        <button type="button" (click)="setCount(ingr, true)"
+                                            class="increment">+</button>
+                                    </div>
+                                    <div class="ing_control-price">
+                                        <b class="price">{{ingr.cost * ingr.count}}</b> грн
+                                    </div>
+                                    <button class="btn-delete" (click)="del(ingr)"></button>
+                                </div>
+                            </div>
+                            <div class="ing-product_desc">
+                                <div class="info-block info-block-ing">
+                                    <div class="info-head total_caloric_single">Харчова цінність страви: <b>{{allKkal *
+                                            this.prodCount}} ккал</b>
+                                    </div>
+                                    <div class="info-body">
+                                        <div class="info-item main_proteins">
+                                            <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                alt="">
+                                            <p>Білки – <b>{{allProt * this.prodCount}}</b> г</p>
+                                        </div>
+                                        <div class="info-item main_fat">
+                                            <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                alt="">
+                                            <p>Жири – <b>{{allFats * this.prodCount}}</b> г</p>
+                                        </div>
+                                        <div class="info-item main_sarbohydrates">
+                                            <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                alt="">
+                                            <p>Вуглеводи – <b>{{allCarb * this.prodCount}}</b> г</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ing_body-right">
+                            <div class="ing_group">
+                                <div class="ing_group-title medium h6">Основа</div>
+                                <div class="ing_row">
+                                    <div *ngFor="let ingr of main" class="ing-custom-block">
+                                        <div class="info-main">
+                                            <button class="info-btn">
+                                                <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                                        fill="#518B26"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="info-block">
+                                                <div class="info-head">Калорії: <b>{{ingr.kkal}} ккал</b></div>
+                                                <div class="info-body">
+                                                    <div class="info-item mod_proteins">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                            alt="">
+                                                        <p>Білки – <b>{{ingr.prot}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_fat">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                            alt="">
+                                                        <p>Жири – <b>{{ingr.fats}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_sarbohydrates">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                            alt="">
+                                                        <p>Вуглеводи – <b>{{ingr.carb}}</b> г</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ingredient" (click)="addIngr(ingr)"
+                                            [ngClass]="{'active': getAdded(ingr)}">
+                                            <div class="ingredient_img">
+                                                <img class="img" [src]="ingr.imgPath" alt="Індичка">
+                                            </div>
+                                            <div class="ingredient_title">{{ingr.name}}</div>
+                                            <div class="ingredient_bottom_block">
+                                                <div class="ingredient_bottom">
+                                                    <span>{{ingr.weight}}г</span>
+                                                    <span><b>{{ingr.cost}}</b> грн</span>
+                                                </div>
+                                            </div>
+                                            <div class="ingredient_action"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ing_group">
+                                <div class="ing_group-title medium h6">Основний інгредієнт</div>
+                                <div class="ing_row">
+                                    <div *ngFor="let ingr of mainIngr" class="ing-custom-block">
+                                        <div class="info-main">
+                                            <button class="info-btn">
+                                                <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                                        fill="#518B26"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="info-block">
+                                                <div class="info-head">Калорії: <b>{{ingr.kkal}} ккал</b></div>
+                                                <div class="info-body">
+                                                    <div class="info-item mod_proteins">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                            alt="">
+                                                        <p>Білки – <b>{{ingr.prot}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_fat">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                            alt="">
+                                                        <p>Жири – <b>{{ingr.fats}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_sarbohydrates">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                            alt="">
+                                                        <p>Вуглеводи – <b>{{ingr.carb}}</b> г</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ingredient" (click)="addIngr(ingr)"
+                                            [ngClass]="{'active': getAdded(ingr)}">
+                                            <div class="ingredient_img">
+                                                <img class="img" [src]="ingr.imgPath" alt="Індичка">
+                                            </div>
+                                            <div class="ingredient_title">{{ingr.name}}</div>
+                                            <div class="ingredient_bottom_block">
+                                                <div class="ingredient_bottom">
+                                                    <span>{{ingr.weight}}г</span>
+                                                    <span><b>{{ingr.cost}}</b> грн</span>
+                                                </div>
+                                            </div>
+                                            <div class="ingredient_action"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="ing_group">
+                                <div class="ing_group-title medium h6">Сири та яйця</div>
+                                <div class="ing_row">
+                                    <div *ngFor="let ingr of chees" class="ing-custom-block">
+                                        <div class="info-main">
+                                            <button class="info-btn">
+                                                <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                                        fill="#518B26"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="info-block">
+                                                <div class="info-head">Калорії: <b>{{ingr.kkal}} ккал</b></div>
+                                                <div class="info-body">
+                                                    <div class="info-item mod_proteins">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                            alt="">
+                                                        <p>Білки – <b>{{ingr.prot}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_fat">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                            alt="">
+                                                        <p>Жири – <b>{{ingr.fats}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_sarbohydrates">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                            alt="">
+                                                        <p>Вуглеводи – <b>{{ingr.carb}}</b> г</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ingredient" (click)="addIngr(ingr)"
+                                            [ngClass]="{'active': getAdded(ingr)}">
+                                            <div class="ingredient_img">
+                                                <img class="img" [src]="ingr.imgPath" alt="Індичка">
+                                            </div>
+                                            <div class="ingredient_title">{{ingr.name}}</div>
+                                            <div class="ingredient_bottom_block">
+                                                <div class="ingredient_bottom">
+                                                    <span>{{ingr.weight}}г</span>
+                                                    <span><b>{{ingr.cost}}</b> грн</span>
+                                                </div>
+                                            </div>
+                                            <div class="ingredient_action"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ing_group">
+                                <div class="ing_group-title medium h6">Овочі та фрукти</div>
+                                <div class="ing_row">
+                                    <div *ngFor="let ingr of vegFrut" class="ing-custom-block">
+                                        <div class="info-main">
+                                            <button class="info-btn">
+                                                <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                                        fill="#518B26"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="info-block">
+                                                <div class="info-head">Калорії: <b>{{ingr.kkal}} ккал</b></div>
+                                                <div class="info-body">
+                                                    <div class="info-item mod_proteins">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                            alt="">
+                                                        <p>Білки – <b>{{ingr.prot}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_fat">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                            alt="">
+                                                        <p>Жири – <b>{{ingr.fats}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_sarbohydrates">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                            alt="">
+                                                        <p>Вуглеводи – <b>{{ingr.carb}}</b> г</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ingredient" (click)="addIngr(ingr)"
+                                            [ngClass]="{'active': getAdded(ingr)}">
+                                            <div class="ingredient_img">
+                                                <img class="img" [src]="ingr.imgPath" alt="Індичка">
+                                            </div>
+                                            <div class="ingredient_title">{{ingr.name}}</div>
+                                            <div class="ingredient_bottom_block">
+                                                <div class="ingredient_bottom">
+                                                    <span>{{ingr.weight}}г</span>
+                                                    <span><b>{{ingr.cost}}</b> грн</span>
+                                                </div>
+                                            </div>
+                                            <div class="ingredient_action"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ing_group">
+                                <div class="ing_group-title medium h6">Зелень</div>
+                                <div class="ing_row">
+                                    <div *ngFor="let ingr of green" class="ing-custom-block">
+                                        <div class="info-main">
+                                            <button class="info-btn">
+                                                <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                                        fill="#518B26"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="info-block">
+                                                <div class="info-head">Калорії: <b>{{ingr.kkal}} ккал</b></div>
+                                                <div class="info-body">
+                                                    <div class="info-item mod_proteins">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                            alt="">
+                                                        <p>Білки – <b>{{ingr.prot}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_fat">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                            alt="">
+                                                        <p>Жири – <b>{{ingr.fats}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_sarbohydrates">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                            alt="">
+                                                        <p>Вуглеводи – <b>{{ingr.carb}}</b> г</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ingredient" (click)="addIngr(ingr)"
+                                            [ngClass]="{'active': getAdded(ingr)}">
+                                            <div class="ingredient_img">
+                                                <img class="img" [src]="ingr.imgPath" alt="Індичка">
+                                            </div>
+                                            <div class="ingredient_title">{{ingr.name}}</div>
+                                            <div class="ingredient_bottom_block">
+                                                <div class="ingredient_bottom">
+                                                    <span>{{ingr.weight}}г</span>
+                                                    <span><b>{{ingr.cost}}</b> грн</span>
+                                                </div>
+                                            </div>
+                                            <div class="ingredient_action"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ing_group">
+                                <div class="ing_group-title medium h6">Хрусткі топінги</div>
+                                <div class="ing_row">
+                                    <div *ngFor="let ingr of toping" class="ing-custom-block">
+                                        <div class="info-main">
+                                            <button class="info-btn">
+                                                <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                                        fill="#518B26"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="info-block">
+                                                <div class="info-head">Калорії: <b>{{ingr.kkal}} ккал</b></div>
+                                                <div class="info-body">
+                                                    <div class="info-item mod_proteins">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                            alt="">
+                                                        <p>Білки – <b>{{ingr.prot}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_fat">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                            alt="">
+                                                        <p>Жири – <b>{{ingr.fats}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_sarbohydrates">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                            alt="">
+                                                        <p>Вуглеводи – <b>{{ingr.carb}}</b> г</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ingredient" (click)="addIngr(ingr)"
+                                            [ngClass]="{'active': getAdded(ingr)}">
+                                            <div class="ingredient_img">
+                                                <img class="img" [src]="ingr.imgPath" alt="Індичка">
+                                            </div>
+                                            <div class="ingredient_title">{{ingr.name}}</div>
+                                            <div class="ingredient_bottom_block">
+                                                <div class="ingredient_bottom">
+                                                    <span>{{ingr.weight}}г</span>
+                                                    <span><b>{{ingr.cost}}</b> грн</span>
+                                                </div>
+                                            </div>
+                                            <div class="ingredient_action"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ing_group">
+                                <div class="ing_group-title medium h6">Соуси</div>
+                                <div class="ing_row">
+                                    <div *ngFor="let ingr of souses" class="ing-custom-block">
+                                        <div class="info-main">
+                                            <button class="info-btn">
+                                                <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                                        fill="#518B26"></path>
+                                                    <path
+                                                        d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                                        fill="#518B26"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="info-block">
+                                                <div class="info-head">Калорії: <b>{{ingr.kkal}} ккал</b></div>
+                                                <div class="info-body">
+                                                    <div class="info-item mod_proteins">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                                            alt="">
+                                                        <p>Білки – <b>{{ingr.prot}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_fat">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                                            alt="">
+                                                        <p>Жири – <b>{{ingr.fats}}</b> г</p>
+                                                    </div>
+                                                    <div class="info-item mod_sarbohydrates">
+                                                        <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                                            alt="">
+                                                        <p>Вуглеводи – <b>{{ingr.carb}}</b> г</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ingredient" (click)="addIngr(ingr)"
+                                            [ngClass]="{'active': getAdded(ingr)}">
+                                            <div class="ingredient_img">
+                                                <img class="img" [src]="ingr.imgPath" alt="Індичка">
+                                            </div>
+                                            <div class="ingredient_title">{{ingr.name}}</div>
+                                            <div class="ingredient_bottom_block">
+                                                <div class="ingredient_bottom">
+                                                    <span>{{ingr.weight}}г</span>
+                                                    <span><b>{{ingr.cost}}</b> грн</span>
+                                                </div>
+                                            </div>
+                                            <div class="ingredient_action"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="create-main-footer">
+    <div class="ing_footer create-footer">
+        <div class="create-footer-inner">
+            <div class="ing_footer-controls">
+                Кількість <div class="thumb-input-number">
+                    <button type="button" class="decrement" (click)="totalCount(false)">−</button>
+                    <input class="product-qty" [value]="prodCount" readonly="" tabindex="-1">
+                    <button type="button" class="increment" (click)="totalCount(true)">+</button>
+                </div>
+                <div class="price">
+                    <b id="ing-total-price">{{allPrice * this.prodCount}}</b> грн
+                </div>
+            </div>
+            <div class="ing_footer-buttons">
+                <button class="btn btn-grey open-popup" [disabled]="ingrBucket.length <= 3" (click)="openDiaolg('favorite')" data-rel="6">Зберегти в
+                    улюблені</button>
+                <button class="btn btn-white fast-order-ing" [disabled]="ingrBucket.length <= 3" (click)="openDiaolg('fast')" data-id="994">Оформити замовлення</button>
+                <button  (click)="openDiaolg('bucket')" [disabled]="ingrBucket.length <= 3"  class="btn btn-primary add-to-cart-btn-ing order-btn" data-id="994">Додати в кошик</button>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="spacer-create"></div>
+<div class="dialog-wrapper" [ngClass]="{'open': nameMe}">
+    <div class="dialog" [ngClass]="{'open': nameMe}">
+        <div class="popup-container size-1">
+            <div class="popup-align text-center">
+                <div class="popup-title h3 title">Ваша страва</div>
+                <div class="form popup-form">
+                    <input type="text" 
+                    class="input name_product_constructor" 
+                    placeholder="*Вкажіть назву страви"
+                    [(ngModel)]="name">
+
+                    <div class="popup-create-btn">
+                        <button class="btn btn-grey" (click)="closeDialog()"  type="submit">скасувати</button>
+                        <button class="btn btn-primary fav-btn_constructor" type="submit"
+                        (click)="createProduct()"
+                        [disabled]="name == '' || name == ' ' || name == null">зберегти</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-close close-popup" (click)="closeDialog()"></button>
+            <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/popup_bg.svg" class="popup-bg-decor"
+                alt="">
+            <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/popup_list.svg"
+                class="popup-list-decor" alt="" >
+        </div>
+
+    </div>
+
+</div>

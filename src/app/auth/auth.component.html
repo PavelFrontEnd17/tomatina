@@ -1,0 +1,21 @@
+<div class="popup-container size-1">
+    <div class="popup-align text-center text">
+        <div class="popup-title h3 title">Вхід в кабінет</div>
+        <form  [formGroup]="authForm" (ngSubmit)="login()" class="form popup-form" id="login-form">
+            <input type="email" class="input" formControlName="email" name="login" placeholder="*Ваш емейл" required="">
+            <input type="password" class="input"  formControlName="pass" name="password" placeholder="*Пароль" required="">
+            <div class="error">
+                <div *ngIf="error"><h5>Невірний емейл або пароль</h5> </div>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Увійти в кабінет</button>
+            <div class="error-message"></div>
+        </form>
+        <div class="d-flex justify-content-between text popup-bottom">
+            <a class="link open-popup" data-rel="2" mat-button mat-dialog-close (click)="changePass()">Забули пароль?</a>
+            <a class="link link-grey open-popup" data-rel="3" mat-button mat-dialog-close (click)="openRegister()">Зареєструватись</a>
+        </div>
+    </div>
+    <button class="btn-close close-popup"  mat-button mat-dialog-close></button>
+    <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/popup_bg.svg" class="popup-bg-decor" alt="">
+    <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/popup_list.svg" class="popup-list-decor" alt="">
+</div>

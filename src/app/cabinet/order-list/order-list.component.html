@@ -1,0 +1,38 @@
+<div class="col-xl-8 offset-xl-2">
+    <div class="history-table-wrap">
+        <table class="history-table">
+
+            <thead>
+                <tr>
+                    <td>№ замовлення</td>
+                    <td>Дата та час</td>
+                    <td>Адреса</td>
+                    <td>Сума</td>
+                    <td colspan="2">Статус</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{order?.id | slice:6}}</td>
+                    <td>{{order?.date}}</td>
+                    <td>{{ order?.adress.city + ', ' 
+                        + order?.adress.street + ' '
+                        + order?.adress.buildNum }}</td>
+                    <td>{{ order?.totalSum }}</td>
+                    <td class="complete"><ul><li>Виконано</li></ul></td>
+                    
+
+                </tr>
+            </tbody>
+
+
+
+        </table>
+        <div style="height: 60px;"></div>
+        <div class="empty-history" *ngIf="ordersLength< 1">
+            Поки що ви не зробили жодного замовлення <a class="simple-link" href="https://www.tomatina.ua">перейти в
+                каталог</a>
+        </div>
+    </div>
+</div>

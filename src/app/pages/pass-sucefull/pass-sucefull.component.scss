@@ -1,0 +1,27 @@
+.wrapper{
+    padding: 80px 75px;
+}
+
+
+.btn-close {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+}
+
+.btn-close {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    -webkit-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.btn-close:before {
+    content: "\02715";
+}

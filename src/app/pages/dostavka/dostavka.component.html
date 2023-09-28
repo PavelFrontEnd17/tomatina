@@ -1,0 +1,298 @@
+<div style="height: 60px;"></div>
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="h2 title text-center swiper-main-title">
+            <h2 style="font-weight: 900;">В нас часто замовляють</h2>
+        </div>
+    </div>
+</div>
+<div class="row product-row filters-row isotop-row">
+    <div class="col-sm-6 col-lg-4 col-xl-3 " *ngFor="let product of products">
+        <div class="product js-product">
+            <div class="product_image-wrap">
+                <a class="product_image" [routerLink]="['/product/'+product.category + '/' + product.id]">
+                    <img class="img img-default imgLoaded" [src]="product?.imgPath">
+                    <ul class="product_labels" *ngIf="product.banner != null && product.banner != '' ">
+                        <li class="product_label" style="background-color: #28af33">{{product.banner}}</li>
+                    </ul>
+                </a>
+                <div class="product_top-right">
+                    <button class="fav-btn " [ngClass]="{'active': getFavorite(product)}" (click)="addFavorite(product)"
+                        data-id="85807"></button>
+                    <div class="info-main">
+
+                        <button class="info-btn">
+                            <svg width="7" height="13" viewBox="0 0 7 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M4.37587 1.25044C4.37587 1.73365 3.98414 2.12538 3.50092 2.12538C3.01771 2.12538 2.62598 1.73365 2.62598 1.25044C2.62598 0.76722 3.01771 0.375488 3.50092 0.375488C3.98414 0.375488 4.37587 0.76722 4.37587 1.25044Z"
+                                    fill="#2d7d7d"></path>
+                                <path
+                                    d="M3.50092 12.6249C3.13867 12.6249 2.84467 12.3309 2.84467 11.9687V5.1875H1.96973C1.60748 5.1875 1.31348 4.8935 1.31348 4.53125C1.31348 4.169 1.60748 3.875 1.96973 3.875H3.50092C3.86317 3.875 4.15717 4.169 4.15717 4.53125V11.9687C4.15717 12.3309 3.86317 12.6249 3.50092 12.6249Z"
+                                    fill="#2d7d7d"></path>
+                                <path
+                                    d="M5.46875 12.6245H1.53125C1.169 12.6245 0.875 12.3305 0.875 11.9683C0.875 11.606 1.169 11.312 1.53125 11.312H5.46875C5.831 11.312 6.125 11.606 6.125 11.9683C6.125 12.3305 5.831 12.6245 5.46875 12.6245Z"
+                                    fill="#2d7d7d"></path>
+                            </svg>
+                        </button>
+
+
+                        <div class="info-block">
+                            <div class="info-head">Основна страва: <b>{{product.kkal}}ккал</b></div>
+                            <div class="info-body">
+                                <div class="info-item">
+                                    <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/bilki_one.svg"
+                                        alt="">
+                                    <p>Білки – <b>{{product.prot}}</b> г;</p>
+                                </div>
+                                <div class="info-item">
+                                    <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/jiri.svg"
+                                        alt="">
+                                    <p>Жири – <b>{{product.fats}}</b> г;</p>
+                                </div>
+                                <div class="info-item">
+                                    <img src="https://www.tomatina.ua/wp-content/themes/tomatina/img/icons/vug.svg"
+                                        alt="">
+                                    <p>Вуглеводи – <b>{{product.carb}}</b> г;</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="floating_buttons">
+                    <button class="btn btn-grey fast-order" (click)="fastOrder(product)" data-id="85807">Швидке
+                        замовлення</button>
+                </div>
+            </div>
+
+            <div class="product_title-wrap">
+                <div class="product_title">
+                    <a class="h5 medium" [routerLink]="['/product/'+product.category + '/' + product.id]"
+                        itemprop="name">{{product.name}}</a>
+                </div>
+                <div class="product_price-wrap">
+                    {{product.cost * product.count}} </div>
+            </div>
+            <div class="product_desc text style-4">{{product.description}}</div>
+            <div class="product_controls hidden_add_to_cart">
+                <div class="thumb-input-number">
+                    <button type="button" (click)="Count(product, false)" class="decrement">-</button>
+                    <input [value]="product.count" class="product-qty" tabindex="-1" max="999">
+                    <button type="button" (click)="Count(product, true)" class="increment">+</button>
+                </div>
+                <button class="btn btn-primary order-btn btn-small add-to-cart-btn" data-sku="17396" data-id="85807"
+                    (click)="addToBuscket(product)">Замовити</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row category-row product-row-wrapper">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="h2 title text-center swiper-main-title">Популярні категорії
+        </div>
+    </div>
+    <div class="col-6 col-lg-4 col-xl-3" *ngFor="let category of categoryList">
+        <div class="product product_cat_box">
+            <div class="product_image-wrap">
+                <a class="product_image" [routerLink]="[ '/product/' + category.path ]">
+                    <img class="img swiper-lazy" [src]="category.imgPath" alt="">
+
+                </a>
+
+            </div>
+
+            <div class="product_title-wrap">
+                <div class="product_title">
+                    <a class="h5 medium" [routerLink]="[ '/product/' + category.path ]"
+                        itemprop="name">{{category.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a class="btn btn-primary all_menu_category" href="https://www.tomatina.ua">Все меню</a>
+<div class="section pay-sec">
+    <div style="height: 60px;"></div>
+    <div class="container" style="
+        width: 100%;
+        max-width: 1840px;
+        padding-left: 60px;
+        padding-right: 60px;
+    ">
+        <div class="row">
+            <div class="col-12">
+                <div class="h2 title text-center page-main-title">Доставка та <span>оплата</span> </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-10 offset-xl-1 col-lt-12 offset-lt-0" style="margin: 0;
+            width: 100%;">
+                <div class="pay-page-map">
+                    <div class="row">
+
+                        <div class="col-7 map order-xl-2" >
+                            <div
+                                style="height: 470px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900;">
+                                <gmp-map class="map-block" id="map" data-lat="49.834338" data-lng="23.984174"
+                                    data-zoom="12"
+                                    data-map-marker="https://www.tomatina.ua/wp-content/themes/tomatina/img/set-marker.png"
+                                    data-default-green-zone="1" data-default-yellow-zone="1" data-default-red-zone="350"
+                                    data-green-zone="300" data-yellow-zone="300" data-red-zone="500"
+                                    data-green-zone-nomin-delivery-price="60" data-yellow-zone-nomin-delivery-price="60"
+                                    data-red-zone-nomin-delivery-price="90" data-current-zone-type=""
+                                    data-current-nomin-delivery-price="0" data-current-zone="0"
+                                    style="position: relative; overflow: hidden;"
+                                    center="49.8397102355957,24.029340744018555" zoom="14" map-id="DEMO_MAP_ID">
+
+                                </gmp-map>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-5 col-lt-5 align-self-center order-xl-1" style="float: left;">
+
+                            <div class="bike-main">
+                                <div class="bike-block green">
+                                    <div class="bike-imgs">
+                                        <img alt=""
+                                            src="https://www.tomatina.ua/wp-content/uploads/2023/05/green-zone-icon.png"
+                                            >
+
+                                    </div>
+                                    <div class="bike-cont text">
+                                        <div class="h4 title">Зелена зона</div>
+                                        <ul>
+                                            <li>Орієнтовний час доставки&nbsp;<span style="color: #599921">39
+                                                    хвилин</span></li>
+                                            <li>При замовленні від <span style="color: #599921">300 грн </span>привеземо
+                                                <span style="color: #599921">БЕЗКОШТОВНО</span>
+                                            </li>
+                                            <li>При замовленні до <span style="color: #599921">300 грн</span> вартість
+                                                доставки <span style="color: #599921">60 грн</span></li>
+                                        </ul>
+                                        <p>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="bike-block yellow">
+                                    <div class="bike-imgs">
+                                        <img alt=""
+                                            src="https://www.tomatina.ua/wp-content/uploads/2023/05/yellow-zone-icon.png"
+                                            >
+
+                                    </div>
+                                    <div class="bike-cont text">
+                                        <div class="h4 title" style="color: #2D2C2C;">Жовта зона</div>
+                                        <ul>
+                                            <li>Орієнтовний час доставки <span style="color: #ffcc00">55 хвилин</span>
+                                            </li>
+                                            <li>При замовленні від <span style="color: #ffcc00">300 грн </span>привеземо
+                                                <span style="color: #ffcc00">БЕЗКОШТОВНО</span>
+                                            </li>
+                                            <li>При замовленні до <span style="color: #ffcc00">300 грн</span> вартість
+                                                доставки <span style="color: #ffcc00">60 грн</span></li>
+                                        </ul>
+                                        <p>&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="bike-block red">
+                                    <div class="bike-imgs">
+                                        <img alt=""
+                                            src="https://www.tomatina.ua/wp-content/uploads/2023/05/red-zone-icon.png"
+                                            >
+
+                                    </div>
+                                    <div class="bike-cont text">
+                                        <div class="h4 title">Червона зона</div>
+                                        <ul>
+                                            <li>Орієнтовний час доставки до <span style="color: #ef2f3d"> 65
+                                                    хвилин</span></li>
+                                            <li>Мінімальне замовлення <span style="color: #ef2f3d">350
+                                                    грн&nbsp;</span>вартість доставки <span style="color: #ef2f3d">90
+                                                    грн</span></li>
+                                            <li>При замовленні від <span style="color: #ef2f3d">500 грн</span><span
+                                                    style="color: #ffcc00">&nbsp;</span>привеземо <span
+                                                    style="color: #ef2f3d">БЕЗКОШТОВНО</span></li>
+                                        </ul>
+                                        <p>&nbsp;</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="section sec-pay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 pay-title">
+                <div class="h2 title text-center">Оплата</div>
+            </div>
+        </div>
+
+        <div class="row row-images">
+            <div class="col-xl-10 offset-xl-1 col-lt-12 offset-lt-0" style="    margin: 0;
+            width: 100%;">
+                <div class="pay-main">
+                    <div class="pay-page-block">
+
+                        <div class="pay-imgs">
+                            <img alt="" 
+                                src="https://www.tomatina.ua/wp-content/uploads/2020/10/pay_page_one.svg"
+                                >
+                        </div>
+                        <div class="pay-cont">
+
+                            <div class="h5 title">Оплата LiqPay</div>
+
+                            <div class="text style-3">Розраховуйся онлайн за своє замовлення через сервіс LiqPay на
+                                сайті</div>
+                        </div>
+                    </div>
+                    <div class="pay-page-block">
+
+                        <div class="pay-imgs">
+                            <img alt="" 
+                                src="https://www.tomatina.ua/wp-content/uploads/2020/10/pay_page_two.svg"
+                                >
+                        </div>
+                        <div class="pay-cont">
+
+                            <div class="h5 title">Оплата карткою</div>
+
+                            <div class="text style-3">Наш кур'єр має з собою термінал та приймає карту для оплати</div>
+                        </div>
+                    </div>
+                    <div class="pay-page-block">
+
+                        <div class="pay-imgs">
+                            <img alt=""
+                                src="https://www.tomatina.ua/wp-content/uploads/2020/10/pay_page_tree-1.svg"
+                                >
+                        </div>
+                        <div class="pay-cont">
+
+                            <div class="h5 title">Оплата готівкою</div>
+
+                            <div class="text style-3">Сплачуй готівкою при отриманні замовлення, попередь якщо потрібна
+                                решта</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 60px;"></div>
+</div>

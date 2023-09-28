@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <div class="enter">
+        <div class=" text-center w-100">
+            <h2>Вхід у <b>кабінет</b></h2>
+        </div>
+        <div class="form">
+            <form [formGroup]="authForm" (ngSubmit)="login()">
+                <input class="input" [ngClass]="{'invalid': authForm.get('email')?.invalid}" formControlName="email" placeholder="*Емеіл" type="text">
+                <input class="input" [ngClass]="{'invalid': authForm.get('pass')?.invalid}" formControlName="pass" placeholder="*Пароль" type="password">
+                <div class="error" *ngIf="error">Невірний емейл або пароль</div>
+                <input type="submit" class="btn btn-primary" value="УВІЙТИ">
+                <div class="text style-3"><a class="open-popup" data-rel="1" mat-button mat-dialog-close>Повернутись</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
